@@ -24,7 +24,7 @@ passport.use(new LinkedInStrategy({
   scope: ['r_emailaddress', 'r_basicprofile'],
   state: true,
 }, function(accessToken, refreshToken, profile, done) {
-  done(null, {id: profile.id, displayName: profile.displayName});
+  done(null, {id: profile.id, displayName: profile.displayName, headline: profile._json.headline, token: accessToken});
 }));
 
 passport.serializeUser(function(user, done) {
@@ -47,6 +47,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
 

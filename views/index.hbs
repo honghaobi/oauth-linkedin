@@ -1,11 +1,16 @@
+{{#if profile}}
+  <img src="{{profile.pictureUrl}}">
+{{/if}}
+
 {{#if user}}
   <h1>
     Hello {{user.displayName}}
     |
+    <div class='blue'>{{user.headline}}</div>
     <a href="/logout">Logout</a>
-  </hh1>
+  </h1>
 {{else}}
-  <p>
+  <h1>
     <a href="/auth/linkedin">Login</a>
-  </p>
+  </h1>
 {{/if}}

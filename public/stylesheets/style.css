@@ -9,4 +9,15 @@ a {
 
 h1 {
   color: orange;
+  font-size: 60px;
+  display: inline;
+}
+
+.blue{
+  color: blue;
+}
+
+img {
+  width: 50px;
+  display: inline;
 }
